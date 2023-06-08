@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+verbose属性
+此属性为指定testNG报告的详细程度，从0开始到10，其中10为最详细，默认生成的xml此属性值为1；
+
+parallel属性
+此属性是指代运行方式，默认为none，即串行运行方式；并行执行方法包括如下几种，下面做分别说明：
+methods：方法层级，若为此值，则该suite下所有的测试方法都将进行多线程，即测试用例级别的多线程。如果用例之间有依赖，则执行顺序会按照设定的依赖来运行；
+<suite name="My suite" parallel="methods" thread-count="5">
+tests：TestNG将在同一线程中运行相同的<Test>标签中的所有方法，每个<test>标签都将处于一个单独的线程中，这允许您将不是线程安全的所有类分组在同一个<test>中，并保证它们都将在同一个线程中运行，同时利用TestNG使用尽可能多的线程运行测试。
+<suite name="My suite" parallel="tests" thread-count="5">
+classes：类级别并发，即TestNG会将该suite下每个class都将在单独的线程中运行，同一个class下的所有用例都将在同一个线程中运行；
+<suite name="My suite" parallel="classes" thread-count="5">
+instances：实例级别，即TestNG将在同一线程中运行同一实例中的所有方法，两个不同实例上的两个方法将在不同的线程中运行。
+<suite name="My suite" parallel="instances" thread-count="5">
+
+
+thread-count属性
+此属性用于指定线程数，按照需要输入，需要parallel参数非none时才可以添加；
+
+可在测试类前添加@Listeners(监听实现类名.class)，也可在XML配置文件中通过listeners标签进行监听的添加。
+
+<listeners>
+       <listener class-name="com.Monitor.IHookableImp"/>
+</listeners>
+
+-->
+<suite name="Suite" parallel="false" >
+    <test name="Test">
+        <parameter name="param1" value="1011111" />
+        <parameter name="param2" value="10" />
+        <groups>
+            <incloud name="group1"></incloud>
+            <incloud name="group2"></incloud>
+        </groups>
+        <classes>
+            <class name="com.stone.testingtool.testfame.testng.NewTest"/>
+            <class name="com.stone.testingtool.testfame.testng.TestCase1"/>
+        </classes>
+    </test> <!-- Test -->
+
+
+</suite> <!-- Suite -->
+

@@ -17,6 +17,7 @@ import java.util.Date;
  * 默认情况下，fastjson 库完全序列化Java bean，但我们可以使用参数 -serialize来忽略特定字段的序列化
  * 参数 ordinal 用于指定字段顺序
  *
+ * @author guocang.shi
  */
 @Data
 @Builder
